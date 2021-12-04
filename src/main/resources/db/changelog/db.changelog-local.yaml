@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: db/migrations/001-movie-table.sql
+  - include:
+      file: db/migrations/002-rating-table.sql
+  - include:
+      file: db/migrations/test/a-movie-data.sql
+  - include:
+      file: db/migrations/test/b-rating-data.sql

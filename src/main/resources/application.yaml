@@ -1,0 +1,27 @@
+---
+spring:
+  datasource:
+    url: ${MYSQL_URL}
+    driver-class-name: com.mysql.jdbc.Driver
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
+  jpa:
+    hibernate.ddl-auto: none
+  liquibase:
+    enabled: true
+  data:
+    rest:
+      base-path: /api
+      default-page-size: 10
+
+---
+profile: local
+
+server:
+  port: 8081
+
+spring:
+  jpa:
+    show-sql: true
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-local.yaml
