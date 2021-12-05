@@ -13,12 +13,11 @@ spring:
     rest:
       base-path: /api
       default-page-size: 10
+      return-body-on-update: false
+      max-page-size: 50
 
 ---
 profile: local
-
-server:
-  port: 8081
 
 spring:
   jpa:
