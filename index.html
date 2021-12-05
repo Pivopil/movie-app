@@ -7,6 +7,7 @@
     <title>Movie App</title>
 </head>
 <body>
+<div id="buttonDiv"></div>
 <div>
 
     <div class="hero is-light is-fullheight">
@@ -47,6 +48,22 @@
         </div>
     </footer>
 </div>
-
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+    function handleCredentialResponse(response) {
+        console.log("Encoded JWT ID token: " + response.credential);
+    }
+    window.onload = function () {
+        google.accounts.id.initialize({
+            client_id: "533437697750-qvhvl9ku0ae7tf1on686pg99vprf9s6q.apps.googleusercontent.com",
+            callback: handleCredentialResponse
+        });
+        google.accounts.id.renderButton(
+            document.getElementById("buttonDiv"),
+            { theme: "outline", size: "large" }  // customization attributes
+        );
+        google.accounts.id.prompt(); // also display the One Tap dialog
+    }
+</script>
 </body>
 </html>
