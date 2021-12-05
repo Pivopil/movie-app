@@ -1,10 +1,8 @@
 ---
 spring:
   datasource:
-    url: ${MYSQL_URL}
+    url: ${DATABASE_URL}
     driver-class-name: com.mysql.jdbc.Driver
-    username: ${MYSQL_USERNAME}
-    password: ${MYSQL_PASSWORD}
   jpa:
     hibernate.ddl-auto: none
   liquibase:
@@ -15,6 +13,7 @@ spring:
       default-page-size: 10
       return-body-on-update: false
       max-page-size: 50
+google-client-id: ${GOOGLE_CLIENT_ID}
 
 ---
 profile: local
