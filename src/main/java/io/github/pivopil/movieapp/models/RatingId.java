@@ -1,10 +1,14 @@
 package io.github.pivopil.movieapp.models;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-@RequiredArgsConstructor
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class RatingId implements Serializable {
   private String userId;
   private Long movie;
