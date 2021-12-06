@@ -12,7 +12,7 @@
 - Register in Terraform Cloud using free account from app.terraform.io
 - (optional) Install Nodejs
 
-### To run the app locally you
+### To run the app locally
 
 You could build and run the app using maven and Idea
 There should be the next mandatory env variables to your run/debug configuration
@@ -46,3 +46,6 @@ google-client-id: ${GOOGLE_CLIENT_ID}
 
 Be sure to provide correct migrations, because Hibernate DDL 
 is disabled and schema structure is create and populated with initial data by Liquibase
+
+### To run Data Preparation Script 
+you need to use OMDB_API_KEY with 
