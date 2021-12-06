@@ -31,3 +31,18 @@ spring:
   liquibase:
     enabled: false
     change-log: classpath:/db/changelog/db.changelog-dev.yaml
+
+---
+profile: test
+
+spring:
+  datasource:
+    url: "jdbc:h2:mem:movie_db;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate.ddl-auto: none
+  liquibase:
+    enabled: true
+    drop-first: true
+    change-log: classpath:/db/changelog/db.changelog-test.yaml
+google-client-id: some-id
