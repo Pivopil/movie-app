@@ -68,4 +68,23 @@ class MovieAppTests {
     // THEN:
     assertTrue(movies.get(0).getIsBestPicture(), "Movie got 'Best Picture' Oscar Award");
   }
+
+  @Test
+  void movieService_createOrUpdateMovieRating_ratingScoreShouldBeUpdated() {
+
+    // WHEN:
+    List<Movie> movies = movieService.getTopTenRatedMovies();
+    Movie movie = movies.get(0);
+    Long id = movie.getId();
+    Long ratingScore = movie.getRatingScore();
+
+    // WHEN:
+    movieService.createOrUpdateMovieRating("user1", id, 99);
+    movies = movieService.getTopTenRatedMovies();
+    Movie updatedMovie = movies.stream().filter(it -> it.getId().equals(id)).findFirst().get();
+    Long updatedRatingScore = updatedMovie.getRatingScore();
+
+    // THEN:
+    assertFalse(ratingScore.equals(updatedRatingScore), "Movie scores are different before and after update");
+  }
 }
