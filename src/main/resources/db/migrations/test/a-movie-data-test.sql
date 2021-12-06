@@ -3,3 +3,9 @@ INSERT INTO movie (id,title,year,is_best_picture,box_office_value) VALUES (2,'Mo
 INSERT INTO movie (id,title,year,is_best_picture,box_office_value) VALUES (3,'Movie 2',1998,0,2000000);
 INSERT INTO movie (id,title,year,is_best_picture,box_office_value) VALUES (4,'Movie 4',2000,1,9000000);
 INSERT INTO movie (id,title,year,is_best_picture,box_office_value) VALUES (5,'Movie 5',1990,0,10000000);
+INSERT INTO movie (id,title,year,is_best_picture,box_office_value) VALUES (6,'Movie 6',2009,1,4000000);
+INSERT INTO movie (id,title,year,is_best_picture,box_office_value) VALUES (7,'Movie 7',2001,0,6000000);
+INSERT INTO movie (id,title,year,is_best_picture,box_office_value) VALUES (8,'Movie 8',1998,0,2000000);
+INSERT INTO movie (id,title,year,is_best_picture,box_office_value) VALUES (9,'Movie 9',2000,1,9000000);
+INSERT INTO movie (id,title,year,is_best_picture,box_office_value) VALUES (10,'Movie 10',1990,0,10000000);
+INSERT INTO movie (id,title,year,is_best_picture,box_office_value) VALUES (11,'Movie 11',1990,0,10000000);
