@@ -1,3 +1,4 @@
+--liquibase formatted sql
 INSERT INTO `movie` (`title`, `year`, `is_best_picture`, `box_office_value`) VALUES ("Black Swan", 2010, 0, 106954678);
 INSERT INTO `movie` (`title`, `year`, `is_best_picture`, `box_office_value`) VALUES ("The Fighter", 2010, 0, 93617009);
 INSERT INTO `movie` (`title`, `year`, `is_best_picture`, `box_office_value`) VALUES ("Inception", 2010, 0, 292576195);

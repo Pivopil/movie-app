@@ -23,3 +23,10 @@ spring:
     show-sql: true
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-local.yaml
+
+---
+profile: dev
+
+spring:
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-dev.yaml
