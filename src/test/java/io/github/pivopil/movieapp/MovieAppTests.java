@@ -1,6 +1,7 @@
 package io.github.pivopil.movieapp;
 
 import io.github.pivopil.movieapp.models.Movie;
+import io.github.pivopil.movieapp.repository.MovieRepository;
 import io.github.pivopil.movieapp.repository.RatingRepository;
 import io.github.pivopil.movieapp.service.MovieService;
 import org.junit.jupiter.api.Test;
@@ -12,20 +13,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class MovieAppTests {
 
   @Autowired private MovieService movieService;
 
-  @Autowired RatingRepository ratingRepository;
+  @Autowired private RatingRepository ratingRepository;
+
+  @Autowired private MovieRepository movieRepository;
 
   @Test
-  void getTopRatedMoviesOrderedByBoxOffice() throws Exception {
+  void movieService_callGetTopTenRatedMovies_getCorrectResult() {
 
-    // GIVEN: Data from H2 db/migrations/test, more then 10 movies with ratings and box office value
+    // GIVEN: Data from H2 db/migrations/test, more than ten movies with ratings and box office
+    // value
 
     // WHEN: user gets top ten rated movies ordered by box office value
     List<Movie> topTenRatedMovies = movieService.getTopTenRatedMovies();
@@ -50,5 +53,19 @@ class MovieAppTests {
               assertEquals(
                   topTenRatedMovies.get(index).getBoxOfficeValue(), boxOfficeValues.get(index));
             });
+  }
+
+  @Test
+  void movieRepository_callGetFindAllByTitle_getMovieByTitleWithBestPictureOscarAwardFlag() {
+    // GIVEN: Data from H2 db/migrations/test for 'Movie 1' 'Best Picture' Oscar Award bool flag
+
+    // WHEN:
+    List<Movie> movies = movieRepository.findAllByTitle("Movie 6");
+
+    // THEN:
+    assertTrue(movies.size() > 0, "Got any results for 'Movie 1' title movie from db");
+
+    // THEN:
+    assertTrue(movies.get(0).getIsBestPicture(), "Movie got 'Best Picture' Oscar Award");
   }
 }
