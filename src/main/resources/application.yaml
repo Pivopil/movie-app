@@ -29,4 +29,5 @@ profile: dev
 
 spring:
   liquibase:
+    enabled: false
     change-log: classpath:/db/changelog/db.changelog-dev.yaml
