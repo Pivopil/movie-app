@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.Objects;
 
 @Slf4j
 public class AuthenticationJwtTokenFilter extends AbstractAuthenticationProcessingFilter {
@@ -50,6 +51,10 @@ public class AuthenticationJwtTokenFilter extends AbstractAuthenticationProcessi
   }
 
   public Authentication getAuthentication(String idTokenString) {
+    if (Objects.isNull(idTokenString)) {
+      log.error("Google Id Token is not presented in Authorization header");
+      throw new BadCredentialsException("Invalid Google Id Token");
+    }
     try {
       GoogleIdToken idToken = googleIdTokenVerifier.verify(idTokenString);
       if (idToken != null) {
