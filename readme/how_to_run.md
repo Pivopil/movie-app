@@ -49,3 +49,9 @@ is disabled and schema structure is create and populated with initial data by Li
 
 ### To run Data Preparation Script 
 you need to use OMDB_API_KEY with 
+
+### To run Terraform you need to populate the next env and terraform variables in Terraform Cloud
+
+![img.png](img.png)
+
+Be sure to set you environment specific variables

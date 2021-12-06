@@ -3,6 +3,8 @@ Movie Demo App
 
 ## Main components
 
+![movie-app](movie-app.jpg)
+
 ### Quick Start
 - [Go to the landing page](https://pivopil.github.io/)
 - Use Google Login Button to get Google Id Jwt token
