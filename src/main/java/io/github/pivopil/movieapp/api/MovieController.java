@@ -4,6 +4,7 @@ import io.github.pivopil.movieapp.api.model.RatingScore;
 import io.github.pivopil.movieapp.models.Movie;
 import io.github.pivopil.movieapp.service.MovieService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -22,7 +23,7 @@ public class MovieController {
 
   @PatchMapping(value = "/api/movies/{movieId}/rating")
   public void createOrUpdateMovieRating(
-      Principal principal, @PathVariable Long movieId, @RequestBody RatingScore ratingScore) {
+      Principal principal, @PathVariable Long movieId, @Validated @RequestBody RatingScore ratingScore) {
     movieService.createOrUpdateMovieRating(principal.getName(), movieId, ratingScore.getScore());
   }
 }
