@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Data
@@ -52,5 +53,24 @@ public class Movie implements Comparable<Movie> {
       return 0;
     }
     return getBoxOfficeValue().compareTo(movie.getBoxOfficeValue());
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Movie)) return false;
+    Movie movie = (Movie) o;
+    if (id == null) return false;
+    return id.equals(movie.getId());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.nonNull(id) ? id.hashCode() : super.hashCode();
+  }
+
+  @Override
+  public String toString() {
+    return this.getClass().getName() + "[id=" + id + "]";
   }
 }
