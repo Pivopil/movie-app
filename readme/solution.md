@@ -45,6 +45,25 @@ curl 'https://springbootapp.ecs.awsdevbot.com/api/movies/search/findAllByTitle?t
 - Google Identity Java SDK for the integrations with Google IAM
 - Github Web Hooks for the integration with AWS Code Pipeline
 
+### MySQL8 Database schema
+
+![db.png](db.png)
+
+#### Movie table
+
+Movie table contains [prepared](https://github.com/Pivopil/movie-app/tree/main/data_loader)
+- **year** - got this data from CSV file
+- **title** - got this data from CSV file
+- **is_best_picture** - got this data from CSV file
+- **box_office_value** - the box office, got this value from [www.omdbapi.com](https://www.omdbapi.com) at the data preparation step using 'year' and 'title' from csv
+
+#### Rating table
+
+- **user_id** - 'sub' claim from Google Id token 
+- **movie_id** - foreign key for Movie id
+- **score** - value from 0 to 99, given by user
+- primary key includes both user_id and movie_id, so user could create or update only one, personal score
+
 ### Frond End App Overview
 - [Static content with index page are hosted on Github](https://pivopil.github.io/)
 - [Repository with code](https://github.com/Pivopil/pivopil.github.io)
