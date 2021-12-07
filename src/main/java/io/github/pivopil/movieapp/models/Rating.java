@@ -42,11 +42,6 @@ public class Rating {
 
   @Override
   public String toString() {
-    return this.getClass().getName()
-        + "[movie_id="
-        + movie.toString()
-        + ", user_id="
-        + userId
-        + "]";
+    return this.getClass().getName() + "[movie_id=" + movie + ", user_id=" + userId + "]";
   }
 }
