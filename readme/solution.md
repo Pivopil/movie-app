@@ -5,6 +5,18 @@ Movie Demo App
 
 ![movie-app](movie-app.jpg)
 
+
+## Real usage cost without loading (100 request per day) in [AWS ECS](https://github.com/Pivopil/movie-app-aws-ecs)
+
+### 8 am, Dec 6 - 11 pm, Dec 9, 2021 - up to 100 h in total
+
+
+![img_1.png](img_1.png)
+
+### Cost projection for the month
+
+![img_2.png](img_2.png)
+
 ### Quick Start
 - [Go to the landing page](https://pivopil.github.io/)
 - Use Google Login Button to get Google Id Jwt token
