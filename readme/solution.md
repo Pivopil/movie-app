@@ -54,8 +54,10 @@ curl 'https://springbootapp.ecs.awsdevbot.com/api/movies/search/findAllByTitle?t
 - H2
 - Liquibase
 - Docker
-- Google Identity Java SDK for the integrations with Google IAM
-- Github Web Hooks for the integration with AWS Code Pipeline
+- [Google Identity Java SDK for the integrations with Google IAM](https://developers.google.com/identity/sign-in/web/backend-auth)
+- [Spring Data Jpa REST](https://spring.io/guides/gs/accessing-data-rest/)
+- [Spring Security Oauth2 JWT](https://waynestalk.com/en/spring-security-google-signin-jwt-jpa-explained-en/)
+- [Spring Security](https://www.javadevjournal.com/spring/securing-a-restful-web-service-with-spring-security/)
 
 ### MySQL8 Database schema
 
@@ -82,10 +84,12 @@ Movie table contains [prepared](https://github.com/Pivopil/movie-app/tree/main/d
 - HTML5
 - CSS3
 - Bulma
-- Google Identity JS SDK
+- [Google Identity JS SDK](https://developers.google.com/identity/gsi/web/guides/display-button#javascript)
 
 ### CI CD pipeline and infrastructure Overview
 - [Repo with movie-app terraform](https://github.com/Pivopil/movie-app-aws-ecs)
+- [Terraform Cloud](https://app.terraform.io/)
+- Github Web Hooks for the integration with AWS Code Pipeline
 - AWS Cloud
 - Route53
 - ACM
