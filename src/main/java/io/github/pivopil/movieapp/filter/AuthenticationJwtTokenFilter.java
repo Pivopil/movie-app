@@ -64,7 +64,7 @@ public class AuthenticationJwtTokenFilter extends AbstractAuthenticationProcessi
       } else {
         throw new BadCredentialsException("Invalid Google Id Token");
       }
-    } catch (GeneralSecurityException | IOException e) {
+    } catch (IllegalArgumentException | GeneralSecurityException | IOException e) {
       log.error("Fail to extract Google Id Token");
       throw new BadCredentialsException("Failed deserialization of Google Id Token", e);
     }
