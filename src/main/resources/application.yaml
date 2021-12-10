@@ -19,6 +19,9 @@ google-client-id: ${GOOGLE_CLIENT_ID}
 profile: local
 
 spring:
+  datasource:
+    url: ${LOCAL_DATABASE_URL}
+    driver-class-name: com.mysql.jdbc.Driver
   jpa:
     show-sql: true
   liquibase:
