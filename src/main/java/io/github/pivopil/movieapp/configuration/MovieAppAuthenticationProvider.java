@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.Collections;
 
 @Component
-public class AuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
+public class MovieAppAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
 
   @Override
   protected void additionalAuthenticationChecks(
