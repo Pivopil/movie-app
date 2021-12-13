@@ -24,7 +24,7 @@ public class MovieController {
     return movieService.getTopTenRatedMovies();
   }
 
-  @PatchMapping(value = "/api/movies/{movieId}/rating")
+  @PostMapping(value = "/api/movies/{movieId}/rating")
   public void createOrUpdateMovieRating(
       Principal principal,
       @PathVariable @NotNull @Min(1) Long movieId,

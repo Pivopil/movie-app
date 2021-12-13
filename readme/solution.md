@@ -31,7 +31,7 @@ curl 'https://springbootapp.ecs.awsdevbot.com/api/movies/top' \
 
 #### Set rating for the movie
 ```shell
-curl --location --request PATCH 'https://springbootapp.ecs.awsdevbot.com/api/movies/16/rating' \
+curl --location --request POST 'https://springbootapp.ecs.awsdevbot.com/api/movies/16/rating' \
   --data-raw '{"score": 77 }' \
   --header 'Content-Type: application/json' \
   --header 'Authorization: GOOGLE_ID_TOKEN'
