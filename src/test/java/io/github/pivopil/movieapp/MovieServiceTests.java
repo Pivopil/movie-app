@@ -2,7 +2,6 @@ package io.github.pivopil.movieapp;
 
 import io.github.pivopil.movieapp.models.Movie;
 import io.github.pivopil.movieapp.repository.MovieRepository;
-import io.github.pivopil.movieapp.repository.RatingRepository;
 import io.github.pivopil.movieapp.service.MovieService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +15,9 @@ import java.util.stream.IntStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class MovieAppTests {
+class MovieServiceTests {
 
   @Autowired private MovieService movieService;
-
-  @Autowired private RatingRepository ratingRepository;
 
   @Autowired private MovieRepository movieRepository;
 
@@ -28,10 +25,9 @@ class MovieAppTests {
   void movieService_callGetTopTenRatedMovies_getCorrectResult() {
 
     // GIVEN: Data from H2 db/migrations/test, more than ten movies with ratings and box office
-    // value
+    List<Movie> topTenRatedMovies = movieService.getTopTenRatedMovies();
 
     // WHEN: user gets top ten rated movies ordered by box office value
-    List<Movie> topTenRatedMovies = movieService.getTopTenRatedMovies();
     List<Integer> boxOfficeValues =
         movieService.getTopTenRatedMovies().stream()
             .map(Movie::getBoxOfficeValue)
@@ -49,10 +45,8 @@ class MovieAppTests {
     // THEN: check the order
     IntStream.range(0, topTenRatedMovies.size())
         .forEach(
-            index -> {
-              assertEquals(
-                  topTenRatedMovies.get(index).getBoxOfficeValue(), boxOfficeValues.get(index));
-            });
+            index -> assertEquals(
+                topTenRatedMovies.get(index).getBoxOfficeValue(), boxOfficeValues.get(index)));
   }
 
   @Test
@@ -72,7 +66,7 @@ class MovieAppTests {
   @Test
   void movieService_createOrUpdateMovieRating_ratingScoreShouldBeUpdated() {
 
-    // WHEN:
+    // GIVEN: Data from H2 db/migrations/test, more than ten movies with ratings and box office
     List<Movie> movies = movieService.getTopTenRatedMovies();
     Movie movie = movies.get(0);
     Long id = movie.getId();
@@ -81,10 +75,17 @@ class MovieAppTests {
     // WHEN:
     movieService.createOrUpdateMovieRating("user1", id, 99);
     movies = movieService.getTopTenRatedMovies();
-    Movie updatedMovie = movies.stream().filter(it -> it.getId().equals(id)).findFirst().get();
-    Long updatedRatingScore = updatedMovie.getRatingScore();
 
     // THEN:
-    assertFalse(ratingScore.equals(updatedRatingScore), "Movie scores are different before and after update");
+    movies.stream()
+        .filter(it -> it.getId().equals(id))
+        .findFirst()
+        .map(Movie::getRatingScore)
+        .ifPresent(
+            updatedRatingScore ->
+                assertNotEquals(
+                    ratingScore,
+                    updatedRatingScore,
+                    "Movie scores are different before and after update"));
   }
 }
