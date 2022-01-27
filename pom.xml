@@ -16,6 +16,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<google-api-client.version>1.32.2</google-api-client.version>
+		<gatling.version>3.7.2</gatling.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -67,7 +68,12 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>io.gatling.highcharts</groupId>
+			<artifactId>gatling-charts-highcharts</artifactId>
+			<version>${gatling.version}</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>com.google.api-client</groupId>
 			<artifactId>google-api-client</artifactId>
@@ -78,6 +84,24 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>io.gatling</groupId>
+				<artifactId>gatling-maven-plugin</artifactId>
+				<version>4.0.1</version>
+				<configuration>
+					<simulationClass>io.github.pivopil.movieapp.gatling.simulation.BasicSimulation</simulationClass>
+					<apiToken>${env.GOOGLE_JWT_ID_TOKEN}</apiToken>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>4.5.0</version>
+				<configuration>
+					<url>${env.DATABASE_URL}</url>
+					<driver>com.mysql.jdbc.Driver</driver>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
